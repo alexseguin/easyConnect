@@ -1,0 +1,130 @@
+<div *ngIf="!loading" class="container d-flex flex-column">
+    <div>
+        <img class="float-right" height="25em" src=".\assets\images\logo-splash.png">
+    </div>
+
+    <span class="mt-2 align-self-center mb-3"><small class="text-muted">Welcome, </small>
+        <strong>{{profile.first_name}}</strong></span>
+
+    <div class="align-self-center mobile-container">
+
+        <div id="accordion">
+            <!-- QUICK ACTIONS DRAWER -->
+            <div class="card">
+                <div class="card-header" id="headingZero" data-toggle="collapse" data-target="#collapseZero">
+                    <h5 class="mb-0">
+                        <span class="btn" aria-expanded="false" aria-controls="collapseZero">
+                            Quick Actions
+                        </span>
+                    </h5>
+                </div>
+
+                <div id="collapseZero" class="collapse" aria-labelledby="headingZero" data-parent="#accordion">
+                    <div class="card-body">
+                        <small class="text-muted">Here you can find pages you've favourited and quickly access
+                            them.</small>
+                        <div class="mt-2">
+                            <small *ngIf="quick.actions.length === 0">You have not added pages to your quick
+                                actions.</small>
+                            <ul *ngIf="quick.actions.length > 0">
+                                <li *ngFor="let act of quick.actions"><a routerLink="{{act.link}}">{{act.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ACCOUNTS DRAWER -->
+            <div class="card">
+                <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne">
+                    <h5 class="mb-0">
+                        <span class="btn" aria-expanded="false" aria-controls="collapseOne">
+                            Accounts
+                        </span>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <th><small>#</small></th>
+                                <th><small>Balance</small></th>
+                                <th><small>Actions</small></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex flex-column">
+                                        <small><strong>MASTER CHECKINGS</strong></small>
+                                        <small class="text-muted">123123123</small>
+                                    </div>
+                                </td>
+                                <td>$5412.14</td>
+                                <td>
+                                    <div class="dropdown dropleft">
+                                        <button class="btn btn-outline-secondary btn-sm" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">•••</button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" (click)="routeToAcctDets()">Details</a>
+                                            <a class="dropdown-item" (click)="routeToTransfers()">Transfers</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- TRANSFERS DRAWER -->
+            <div class="card">
+                <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo">
+                    <h5 class="mb-0">
+                        <span class="btn" aria-expanded="false" aria-controls="collapseTwo">
+                            Transfers
+                        </span>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <small class="small text-muted">Select the type of transfer you're interested in doing
+                            today.</small>
+                        <ul class="mt-2">
+                            <li><a class="link" (click)="routeToETransfers()">Email transfers</a></li>
+                            <li><a class="link" (click)="routeToCheque()">Cheque deposit</a></li>
+                            <li><a class="link" (click)="routeToTransfers()">Transfer between accounts</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- OTHERS DRAWER -->
+            <div class="card">
+                <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour">
+                    <h5 class="mb-0">
+                        <span class="btn" aria-expanded="false" aria-controls="collapseFour">
+                            Others
+                        </span>
+                    </h5>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                    <div class="card-body">
+                        <small class="small text-muted">Additionnal actions you can take on your account are available
+                            here.</small>
+                        <ul class="mt-2">
+                            <li><a class="link">Manage your personal information</a></li>
+                            <li><a class="link">Security options</a></li>
+                            <li><a class="link">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <button class="mt-4 btn btn-outline-info ">
+        Having issues?
+    </button>
+    <button (click)="signOut()" class="mt-2 btn btn-outline-danger ">
+        Sign out
+    </button>
+</div>
