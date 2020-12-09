@@ -79,7 +79,7 @@ export class AuthService {
   }
 
   get validate(): Session {
-    return this.session ? this.session : {token: 'asdf1234', profile: {first_name: "John", last_name: "Doe"}} as Session;
+    return this.session ? this.session : {} as Session;
   }
 
   async resolveUser(creds: Credentials): Promise<Profile> {
